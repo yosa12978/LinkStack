@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'LinkStack - '+${title}"/>
+</head>
+<body>
+<center>
+
+    <div style="width: 850px; ">
+        <header th:insert="blocks/header :: header"></header>
+
+
+    <h2>Home</h2>
+
+
+    <div th:each="i: ${links}">
+        <a th:href="${i.Url}" th:text="${i.Url}"/>
+    </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'LinkStack - Signup'"/>
+</head>
+<body>
+
+<center>
+
+    <div style="width: 850px;">
+        <header th:insert="blocks/header :: header"></header>
+        <h2>Signup</h2>
+
+        <form th:action="@{/signup}" method="post">
+            <div><input type="text" placeholder="username" class="form-control" style = "width:340px"name="username"/></div><br>
+            <div><input type="password" placeholder="password" class="form-control" style = "width:340px" name="password"/></div><br>
+            <div><input type="submit" value="Signup" class="btn btn-outline-warning"/></div>
+        </form>
+
+    </div>
+
+</body>
+</html>

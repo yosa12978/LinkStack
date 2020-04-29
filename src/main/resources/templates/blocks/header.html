@@ -1,0 +1,20 @@
+<div th:fragment="header">
+    <link rel="icon" href="/images/icon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <nav  style="background-color: #F4D44F;">
+        <strong><a href="/"><img src="/images/1.PNG" style="width:200px; height:auto"/></a>
+        <a href="/" class="btn btn-outline-danger">Home</a>
+
+        <span th:if="${session.username != null}">
+            <a href="/links" class="btn btn-outline-danger">MyLinks</a>
+            <a href="/logout" class="btn btn-outline-danger">Logout</a>
+        </span>
+
+        <span th:if="${session.username == null}">
+            <a href="/log_in" class="btn btn-outline-danger">Login</a>
+            <a href="/signup" class="btn btn-outline-danger">Signup</a>
+        </span>
+        </strong>
+    </nav>
+    <hr>
+</div>
