@@ -28,6 +28,7 @@ public class AccountController {
             return "redirect:/log_in?error";
         session.setAttribute("username", user.getUsername());
         session.setAttribute("role", user.getRoles());
+        session.setMaxInactiveInterval(-1);
         userService.changeActive(user.getUsername(), true);
         return "redirect:/";
     }
@@ -47,6 +48,7 @@ public class AccountController {
         userService.changeActive( (String)session.getAttribute("username"), false );
         session.removeAttribute("username");
         session.removeAttribute("role");
+        session.invalidate();
         return "redirect:/log_in?logout";
     }
 }
