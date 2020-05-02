@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkStack - Create</title>
+</head>
+<body>
+<center>
+
+    <div style="width: 850px;">
+        <header th:insert="blocks/header :: header"></header>
+        <a href="/links">My Links</a>
+        <hr>
+        <h2>Create</h2>
+        <div th:if="${param.success}">
+            <div class="alert alert-success">
+                Link added successfull!</div>
+        </div>
+        <form method="post">
+            <input placeholder="URL" type="url" class="form-control" style="width:500px" name="Url"><br>
+            <input placeholder="title(optional)" type="text" class="form-control" style="width:500px" name="title"><br>
+            <button type="submit" class="btn btn-warning">Add Link</button>
+        </form>
+    </div>
+</center>
+
+</body>
+</html>

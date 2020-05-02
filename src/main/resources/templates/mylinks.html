@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkStack - Links</title>
+</head>
+<body>
+<center>
+
+    <div style="width: 850px;">
+        <header th:insert="blocks/header :: header"></header>
+        <h2 th:text="${session.username} + ' links!'"/>
+        <a href="/create">Add Link</a><hr>
+        <div th:each="el:${links}">
+            <div class="alert alert-warning">
+                <a th:href="${el.Url}" th:text="${el.Url}"/>
+                <hr>
+                <span th:text="${el.PubDate}"/>
+                <a class="btn btn-danger" style="color:white" th:href="'/delete/'+${el.id}">Remove Link</a>
+            </div>
+        </div>
+    </div>
+</center>
+
+</body>
+</html>

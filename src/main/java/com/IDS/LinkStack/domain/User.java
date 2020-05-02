@@ -2,6 +2,8 @@ package com.IDS.LinkStack.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +22,6 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-
 
     public User(){}
     public User(@NotNull String username, @NotNull String password, Boolean active, Set<Role> roles) {

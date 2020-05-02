@@ -24,7 +24,7 @@ public class AccountController {
 
     @PostMapping("/log_in")
     public String login(User user, HttpSession session){
-        if(!userService.isUserExist(user.getUsername(), user.getPassword()))
+        if( !userService.isUserExist(user.getUsername(), userService.getMd5(user.getPassword())) )
             return "redirect:/log_in?error";
         session.setAttribute("username", user.getUsername());
         session.setAttribute("role", user.getRoles());

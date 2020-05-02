@@ -6,6 +6,11 @@ import com.IDS.LinkStack.domain.Role;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import java.util.*;
 
 @Service
@@ -16,8 +21,24 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public String getMd5(String input)
+    {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32)
+                hashtext = "0" + hashtext;
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Boolean saveUser(User user){
-        user.setPassword(user.getPassword());
+        user.setPassword(getMd5(user.getPassword()));
         if(userRepository.findByUsername(user.getUsername()) != null)
             return false;
         user.setRoles(Collections.singleton(Role.USER));
